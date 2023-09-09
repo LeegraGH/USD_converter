@@ -7,6 +7,7 @@ const App = () => {
   const [quotes, setQuotes] = useState({});
   const [currentQuote, setCurrentQuote] = useState({name: "USD", value: 0});
   const [multiplier, setMultiplier] = useState(0);
+  const [checkCorrect, setCheckCorrect] = useState(true);
 
   const convertService = new ConvertService();
 
@@ -31,8 +32,17 @@ const App = () => {
   }
 
   function onLoadMultiplier(value){
-    if (typeof value === "number" && value>0) setMultiplier(value);
-    else setMultiplier(0);
+    if (typeof value === "number" && value>0) {
+      setMultiplier(value);
+      setCheckCorrect(true);
+    } else if (value===0) {
+      setMultiplier(0);
+      setCheckCorrect(true);
+    }
+    else {
+      setMultiplier(0);
+      setCheckCorrect(false);
+    }
   }
 
   const listQuotes = useMemo(()=>{
@@ -61,7 +71,10 @@ const App = () => {
         <select id="quotes" autoFocus onChange={e=>onLoadCurrentQuote(e.target.value)}>
           {listQuotes}
         </select>
-        <input type="text" onChange={e=>onLoadMultiplier(+(e.target.value))}/>
+        <div className="input_value">
+          <input type="text" onChange={e=>onLoadMultiplier(+(e.target.value))}/>
+          {checkCorrect?null:<span className="correct">Please, enter a number.</span>}
+        </div>
       </div>
     </div>
   )

@@ -42,12 +42,19 @@ body {
   height: 125px;
 }
 
+.converted_settings__block{
+  align-items: start;
+}
+
 .converted_values__block i{
   font-size: 32px;
 }
 
 .convert {
-  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content:center;
   width: 215px;
   height: 100%;
   border-radius: 5px;
@@ -65,33 +72,42 @@ body {
 }
 
 .convert .currency_name{
-  position: absolute;
   display: block;
   font-size: 12px;
-  bottom: 20px;
-  left: 45%;
 }
 
 select{
-  width: 100%;
+  width: 240px;
   height: 30px;
   border-radius: 5px;
   box-shadow: 5px 5px 10px rgba(0,0,0, .2);
   background-color: #e6e6e6;
   text-align: center;
   font-size: 14px;
-  margin: 0 auto;
   border: none;
 }
 
 input{
-  width: 100%;
+  width: 240px;
   height: 30px;
   border-radius: 5px;
   box-shadow: 5px 5px 10px rgba(0,0,0, .2);
   background-color: #e6e6e6;
   text-align: center;
   font-size: 16px;
-  margin: 0 auto;
   border: none;
+  padding: 0;
+}
+
+.input_value{
+  position: relative;
+}
+
+.correct{
+  position: absolute;
+  width: 150px;
+  bottom: -20px;
+  left: 45px;
+  color: red;
+  font-size: 14px;
 }
